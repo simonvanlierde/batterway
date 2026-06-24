@@ -1,0 +1,3 @@
+# Exclude the one archived scratch notebook from GitHub's language statistics
+# so the repository is reported as Python (its actual content) rather than Jupyter.
+data/archive/regression.ipynb linguist-documentation

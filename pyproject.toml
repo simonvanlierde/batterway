@@ -30,6 +30,11 @@ dependencies = [
     "sentier_data_tools"
 ]
 
+[tool.uv]
+# sentier_data_tools (via playhouse.sqlite_ext) is incompatible with peewee >= 4,
+# which dropped/relocated SqliteExtDatabase. Constrain the transitive dependency.
+constraint-dependencies = ["peewee<4"]
+
 [project.urls]
 source   = "https://github.com/simonvanlierde/batterway"
 homepage = "https://github.com/simonvanlierde/batterway"

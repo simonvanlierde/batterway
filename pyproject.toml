@@ -57,7 +57,7 @@ version = { attr = "batterway.__version__" }
 [tool.pytest.ini_options]
 addopts       = "--cov batterway --cov-report term-missing --verbose"
 norecursedirs = [".tox", "build", "dist"]
-testpaths     = ["tests/*.py"]
+testpaths     = ["tests"]
 
 [tool.flake8]
 # Some sane defaults for the code style checker flake8

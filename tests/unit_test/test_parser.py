@@ -10,4 +10,3 @@ def test_parser() -> None:
     r_process.update_fixed_input_lci({"Battery_NMC442": 578.0})
 
 
-test_parser()

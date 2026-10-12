@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Adding an incompatible type to a `Quantity` or `ProductInstance` now raises `TypeError`
+  instead of silently passing.
+- Printing a `ProcessLCI`, checking a `RecyclingRoute` and fetching data in `RecyclingModel` no
+  longer fail on attributes that do not exist.
+- `pytest` now finds and runs the test suite.
+
 ## [0.1.0] - 2022-03-22
 
 ### Added

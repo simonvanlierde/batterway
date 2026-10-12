@@ -15,8 +15,8 @@ class ProcessLCI:
         self.output_relative_lci: dict[tuple[Product, Product], float] = output_relative_lci
 
     def __str__(self):
-        return f"{self.name} ({self.direction})" + "\n".join(
-            [f"{k[0]} / {k[1]} : {v}" for k, v in self.relative_lci.items()]
+        return f"{self.name}\n" + "\n".join(
+            [f"{k[0]} / {k[1]} : {v}" for k, v in (self.input_relative_lci | self.output_relative_lci).items()]
         )
 
 
@@ -182,14 +182,16 @@ class RecyclingRoute:
     def ensure_consistency(self) -> None:
         output_products = None
         previous_process = None
-        for process in self.process_sequence:
+        for step in self.process_sequence:
             if output_products is not None:
-                input_products = [f.product for f in process.inputs]
+                input_products = [f.product for f in step.inputs]
                 if not any(p_output in input_products for p_output in output_products):
-                    err_msg = f"No product produced by {previous_process} used by {process}"
+                    err_msg = f"No product produced by {previous_process} used by {step}"
                     raise ValueError(err_msg)
-                if process.ref_input not in input_products:
-                    err_msg = f"Missing the reference input of {process} from {previous_process}"
+                # The reference inputs are the products that drive the process's relative LCI.
+                ref_inputs = {ref for ref, _ in step.ref_input_to_input_relation | step.ref_input_to_output_relation}
+                if not any(ref in output_products for ref in ref_inputs):
+                    err_msg = f"Missing the reference input of {step} from {previous_process}"
                     raise ValueError(err_msg)
-            output_products = [f.product for f in process.outputs]
-            previous_process = process
+            output_products = [f.product for f in step.outputs]
+            previous_process = step

@@ -19,6 +19,12 @@ characterisation engine.
 
 It was built at the **2024 Départ de Sentier autumn school** on open life-cycle assessment.
 
+## Status
+
+This is a workshop prototype, not a validated model. It does not conserve mass: the outputs of a
+recycling run account for only about 1% of the battery mass fed in, so about 99% is lost. Do not
+use its results for real assessments.
+
 ## Why
 
 batterway is an exercise in open, reproducible LCA on top of the

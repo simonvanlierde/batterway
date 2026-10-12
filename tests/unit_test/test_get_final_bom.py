@@ -73,5 +73,9 @@ def test_product_instance_bom() -> None:
         assert final_bom.product_quantities[material].qty.value == pytest.approx(quantity.value)
 
 
-test_product_bom()
-test_product_instance_bom()
+
+
+def test_quantity_rejects_incompatible_type() -> None:
+    """Adding a non-numeric value to a Quantity raises TypeError."""
+    with pytest.raises(TypeError):
+        Quantity(1.0, uc.kg) + "1"

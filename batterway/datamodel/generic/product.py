@@ -33,7 +33,7 @@ class Quantity:
             err_msg = (
                 f"Quantity is not compatible with {other.__class__.__name__}, only with float, int or Quantity objects."
             )
-            return TypeError(err_msg)
+            raise TypeError(err_msg)
         return True
 
     def __eq__(self, other: "Quantity") -> bool:
@@ -184,7 +184,7 @@ class ProductInstance:
             err_msg = (
                 f"Quantity is not compatible with {other.__class__.__name__}, only with float, int or Quantity objects."
             )
-            return TypeError(err_msg)
+            raise TypeError(err_msg)
         return True
 
     def __eq__(self, other: "ProductInstance") -> bool:

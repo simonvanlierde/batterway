@@ -17,7 +17,7 @@ class RecyclingModel(sentier_data_tools.SentierModel, ):
     }
     def get_recycled_product_inventory(self) -> None:
         bom_electrolysis = self.get_model_data(
-            self, product=self.hydrogen, kind=DatasetKind.BOM
+            product=self.demand.product_iri, kind=DatasetKind.BOM
         )
     def __init__(self, recycled_product_iri:str):
         super().__init__(

@@ -37,19 +37,15 @@ Request features on the [Issue Tracker][Issue Tracker].
 
 ## How to set up your development environment
 
-Install the package with development requirements:
+Install the development requirements:
 
 ```console
-$ pip install -e ".[dev]"
+$ uv sync --extra dev
 ```
 
 ## How to build the documentation locally
 
-Make sure you have installed the `dev` and `docs` extras of the package.
-
-```console
-$ pip install -e ".[dev,docs]"
-```
+Install Sphinx and the theme from `docs/environment.yaml` into the same environment.
 
 Build the documentation providing the `docs` directory at the root of the project as the source
 and specifying the output directory.
@@ -62,16 +58,16 @@ sphinx-build docs docs/_build
 ## How to test the project
 
 
-1. Install the package with development requirements:
+1. Install the test requirements:
 
 ```console
-$ pip install -e ".[testing]"
+$ uv sync --extra testing
 ```
 
 2. Run the full test suite:
 
 ```console
-$ pytest
+$ uv run pytest
 ```
 
 

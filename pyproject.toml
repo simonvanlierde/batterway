@@ -28,7 +28,7 @@ testing = ["pytest", "pytest-cov", "python-coveralls"]
 dev     = ["pre-commit", "pylint", "pytest", "pytest-cov", "pytest-randomly"]
 
 [tool.pytest.ini_options]
-addopts       = "--cov batterway --cov-report term-missing --verbose"
+addopts       = "--cov batterway --cov-report term-missing --cov-report xml --verbose"
 norecursedirs = [".tox", "build", "dist"]
 testpaths     = ["tests"]
 # Not an installed package: tests import batterway from the repo root.

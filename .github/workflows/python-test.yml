@@ -29,6 +29,9 @@ on:
 jobs:
   testing:
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+      id-token: write  # Codecov upload signs in with the run's OIDC token; the repo has no CODECOV_TOKEN
     strategy:
       fail-fast: false
       matrix:
@@ -50,3 +53,5 @@ jobs:
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4
+        with:
+          use_oidc: true

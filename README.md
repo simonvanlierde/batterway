@@ -4,6 +4,8 @@
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](LICENSE)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)][pre-commit]
 [![Black](https://img.shields.io/badge/code%20style-black-000000.svg)][black]
+[![CI](https://github.com/simonvanlierde/batterway/actions/workflows/python-test.yml/badge.svg)](https://github.com/simonvanlierde/batterway/actions/workflows/python-test.yml)
+[![Codecov](https://codecov.io/gh/simonvanlierde/batterway/branch/main/graph/badge.svg)](https://codecov.io/gh/simonvanlierde/batterway)
 
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [black]: https://github.com/psf/black

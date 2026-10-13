@@ -36,7 +36,7 @@ than ad-hoc spreadsheets.
 
 ## Installation
 
-The package is not published on PyPI; install it from source. It uses
+It is not a published package: clone the repo and run it from there. It uses
 [uv](https://docs.astral.sh/uv/) for environment and dependency management:
 
 ```bash
@@ -44,8 +44,6 @@ git clone https://github.com/simonvanlierde/batterway.git
 cd batterway
 uv sync
 ```
-
-(Or, with a plain virtualenv: `pip install -e .`.)
 
 ## Usage
 

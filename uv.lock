@@ -183,7 +183,7 @@ testing = [
 requires-dist = [
     { name = "chempy" },
     { name = "pandas" },
-    { name = "peewee", specifier = "<4" },
+    { name = "peewee", specifier = "<5" },
     { name = "pre-commit", marker = "extra == 'dev'" },
     { name = "pylint", marker = "extra == 'dev'" },
     { name = "pytest", marker = "extra == 'dev'" },
@@ -1851,11 +1851,11 @@ wheels = [
 
 [[package]]
 name = "peewee"
-version = "3.19.0"
+version = "4.5.3"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/88/b0/79462b42e89764998756e0557f2b58a15610a5b4512fbbcccae58fba7237/peewee-3.19.0.tar.gz", hash = "sha256:f88292a6f0d7b906cb26bca9c8599b8f4d8920ebd36124400d0cbaaaf915511f", size = 974035, upload-time = "2026-01-07T17:24:59.597Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/6f/85/8142c26b9942e2993fdcd9163089a8531ac255aecef1ca4cc1b611e8d193/peewee-4.5.3.tar.gz", hash = "sha256:434576afaf806428a01f84af74c42fde59372c4f6a6eba26d9b5372113344a8a", size = 821823, upload-time = "2026-10-07T11:49:35.855Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/1a/41/19c65578ef9a54b3083253c68a607f099642747168fe00f3a2bceb7c3a34/peewee-3.19.0-py3-none-any.whl", hash = "sha256:de220b94766e6008c466e00ce4ba5299b9a832117d9eb36d45d0062f3cfd7417", size = 411885, upload-time = "2026-01-07T17:24:58.33Z" },
+    { url = "https://files.pythonhosted.org/packages/76/e3/1f3847b62db730a58c6f6d689c060d7228721f3a66e612a27cda297e875a/peewee-4.5.3-py3-none-any.whl", hash = "sha256:4c5db9d2a3c4ae9a5725b229c29af51dbd063193f3a6c03b837974a90e44548c", size = 194532, upload-time = "2026-10-07T11:49:34.153Z" },
 ]
 
 [[package]]

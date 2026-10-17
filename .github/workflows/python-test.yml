@@ -26,6 +26,9 @@ on:
       - ".gitignore"
   workflow_dispatch:  # also allow manual trigger, for testing purposes
 
+permissions:
+  contents: read
+
 jobs:
   testing:
     runs-on: ${{ matrix.os }}
@@ -39,7 +42,9 @@ jobs:
         py-version: ["3.11", "3.12"]
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
 
       - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
@@ -52,6 +57,6 @@ jobs:
         run: uv run pytest
 
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v7
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7
         with:
           use_oidc: true

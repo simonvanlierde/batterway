@@ -93,10 +93,6 @@ class RecyclingProcess(Process):
                 updated_in_flow_value[product_influenced] += (
                     final_bom.product_quantities[product_influencing].qty * ratio
                 )
-        for product_influenced in updated_in_flow_value:
-            product_influenced.quantity = Quantity(
-                updated_in_flow_value[product_influenced], product_influenced.reference_quantity.unit
-            )
 
         updated_out_flow_value = {}
         for (product_influencing, product_influenced), ratio in self.ref_input_to_output_relation.items():
@@ -108,11 +104,6 @@ class RecyclingProcess(Process):
                 updated_out_flow_value[product_influenced] += (
                     final_bom.product_quantities[product_influencing].qty * ratio
                 )
-
-        for product_influenced in updated_out_flow_value:
-            product_influenced.quantity = Quantity(
-                updated_out_flow_value[product_influenced], product_influenced.reference_quantity.unit
-            )
 
         self.computed_output_bom = BoM(updated_out_flow_value)
         self.computed_input_bom = BoM(updated_in_flow_value)

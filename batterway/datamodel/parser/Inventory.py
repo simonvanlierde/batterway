@@ -180,7 +180,11 @@ class Inventory:
                                                                real_product_dict[p.name].reference_quantity)
                     for bom in fixed_lci_associated.values() for p in bom.products
                 }),
-                output_products=BoM({}),
+                # The outputs are the products the output relative LCI produces, at their reference quantity.
+                output_products=BoM({
+                    influenced: ProductInstance(influenced, influenced.reference_quantity)
+                    for _, influenced in relative_lci_output
+                }),
                 ref_input_to_input=relative_lci_input,
                 ref_input_to_output=relative_lci_output
             )

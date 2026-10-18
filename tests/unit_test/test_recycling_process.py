@@ -47,3 +47,16 @@ def test_chocolate_recycling_process():
         "recyclin_test", input_products, output_products, relative_input_influenced, relative_output_influences
     )
 
+
+
+def test_missing_output_influencer_is_named(capsys):
+    input_products = BoM({UC.water: ProductInstance(UC.water, Quantity(1.0, UC.kg))})
+    with pytest.raises(ValueError, match="influencing the output"):
+        RecyclingProcess(
+            "recycling_test",
+            input_products,
+            BoM({}),
+            {(UC.water, UC.heat): Quantity(1.0, UC.kg)},
+            {(UC.steel, UC.vapor): Quantity(1.0, UC.kg)},
+        )
+    assert "steel" in capsys.readouterr().out

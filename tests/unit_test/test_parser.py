@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from batterway.datamodel.generic.product import ChemicalCompound
 from batterway.datamodel.parser.Inventory import Inventory
 
 
@@ -10,3 +11,8 @@ def test_parser() -> None:
     r_process.update_fixed_input_lci({"Battery_NMC442": 578.0})
 
 
+def test_parser_builds_chemical_compounds() -> None:
+    """Rows of chemical_compounds.csv become ChemicalCompound objects with their formula."""
+    new_inventory = Inventory.create_from_file(Path(__file__).parent.parent.parent / "data/dataframes/")
+    assert isinstance(new_inventory.products["Ca(OH)2"], ChemicalCompound)
+    assert new_inventory.products["Ca(OH)2"].molar_mass > 0

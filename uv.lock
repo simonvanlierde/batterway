@@ -162,6 +162,8 @@ dependencies = [
     { name = "chempy" },
     { name = "pandas" },
     { name = "peewee" },
+    { name = "pydantic" },
+    { name = "rdflib" },
     { name = "sentier-data-tools" },
 ]
 
@@ -185,6 +187,7 @@ requires-dist = [
     { name = "pandas" },
     { name = "peewee", specifier = "<4" },
     { name = "pre-commit", marker = "extra == 'dev'" },
+    { name = "pydantic", specifier = ">=2" },
     { name = "pylint", marker = "extra == 'dev'" },
     { name = "pytest", marker = "extra == 'dev'" },
     { name = "pytest", marker = "extra == 'testing'" },
@@ -192,6 +195,7 @@ requires-dist = [
     { name = "pytest-cov", marker = "extra == 'testing'" },
     { name = "pytest-randomly", marker = "extra == 'dev'" },
     { name = "python-coveralls", marker = "extra == 'testing'" },
+    { name = "rdflib", specifier = ">=7" },
     { name = "sentier-data-tools" },
 ]
 provides-extras = ["testing", "dev"]

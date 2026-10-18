@@ -79,3 +79,9 @@ def test_quantity_rejects_incompatible_type() -> None:
     """Adding a non-numeric value to a Quantity raises TypeError."""
     with pytest.raises(TypeError):
         Quantity(1.0, uc.kg) + "1"
+
+
+def test_product_instance_equality() -> None:
+    """Two instances of the same product and quantity are equal."""
+    assert ProductInstance(uc.steel, Quantity(2.0, uc.kg)) == ProductInstance(uc.steel, Quantity(2.0, uc.kg))
+    assert ProductInstance(uc.steel, Quantity(2.0, uc.kg)) != ProductInstance(uc.steel, Quantity(3.0, uc.kg))

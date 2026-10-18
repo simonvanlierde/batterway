@@ -69,7 +69,7 @@ class RecyclingProcess(Process):
             err_msg = "Products influencing the input should be present in the input LCI."
             raise ValueError(err_msg)
         if any(missing_input_influencing_output):
-            print([p.name for p in missing_input_influencing_input])
+            print([p.name for p in missing_input_influencing_output])
             err_msg = "Products influencing the output should be present in the input LCI."
             raise ValueError(err_msg)
         return True

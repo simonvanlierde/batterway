@@ -15,6 +15,8 @@ dependencies = [
     # sentier_data_tools imports SqliteExtDatabase from playhouse, which peewee 4 dropped.
     # A direct pin, not a uv-only constraint.
     "peewee<4",
+    "pydantic>=2",
+    "rdflib>=7",
     "sentier_data_tools"
 ]
 

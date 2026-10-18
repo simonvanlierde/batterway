@@ -123,12 +123,12 @@ class Inventory:
                 x[1].reference_quantity.to_quantity(real_units),
                 bom=None,
             )
-            if isinstance(x[1], ProductPdt)
+            if not isinstance(x[1], ChemicalCompoundPdt)
             else ChemicalCompound(
                 x[1].name,
                 None if x[1].iri is None else str(x[1].iri),
                 x[1].reference_quantity.to_quantity(real_units),
-                bom=None,
+                x[1].chemical_formula,
             )
             for x in all_products.items()
         )

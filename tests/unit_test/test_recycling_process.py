@@ -1,7 +1,7 @@
 import pytest
 
 import tests.unit_test.utils_common as UC
-from batterway.datamodel.generic.process import RecyclingProcess
+from batterway.datamodel.generic.process import RecyclingProcess, RecyclingRoute
 from batterway.datamodel.generic.product import BoM, ProductInstance, Quantity
 
 
@@ -60,3 +60,15 @@ def test_missing_output_influencer_is_named(capsys):
             {(UC.steel, UC.vapor): Quantity(1.0, UC.kg)},
         )
     assert "steel" in capsys.readouterr().out
+
+
+def test_recycling_route_iterates_process_flows():
+    def water_step(name):
+        water = BoM({UC.water: ProductInstance(UC.water, Quantity(1.0, UC.kg))})
+        return RecyclingProcess(
+            name, water, water, {(UC.water, UC.heat): Quantity(1.0, UC.kg)}, {(UC.water, UC.vapor): Quantity(1.0, UC.kg)}
+        )
+
+    steps = [water_step("step_1"), water_step("step_2")]
+    assert "water" in str(steps[0])
+    RecyclingRoute("route", steps).ensure_consistency()

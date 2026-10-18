@@ -161,6 +161,9 @@ class BoM:
         elif isinstance(item, Product):
             return item in self.products
 
+    def __iter__(self):
+        return iter(self.product_quantities.values())
+
 
 class ProductInstance:
     """An instance of a product with a specific quantity."""

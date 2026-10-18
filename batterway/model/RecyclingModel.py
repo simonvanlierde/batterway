@@ -1,3 +1,10 @@
+"""Unfinished stub of a sentier_data_tools model for recycling, started at the 2024 autumn school.
+
+It cannot be instantiated: `run` is not implemented, it declares the old `provides`/`needs`
+instead of `aliases`, and `Demand` is called without the required unit and amount.
+Nothing in the package imports it.
+"""
+
 import sentier_data_tools
 from sentier_data_tools import Demand, RunConfig, DatasetKind, ProductIRI
 

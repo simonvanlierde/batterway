@@ -88,6 +88,8 @@ The model inputs live in [`data/dataframes/`](data/dataframes/) as CSV files: `u
   [`datamodel/generic/process.py`](batterway/datamodel/generic/process.py) (`Process`,
   `RecyclingProcess`, `RecyclingRoute`); CSV loading and validation is in
   [`datamodel/parser/`](batterway/datamodel/parser/).
+- [`batterway/model/RecyclingModel.py`](batterway/model/RecyclingModel.py) — an unfinished stub
+  of a `sentier_data_tools` model. It cannot be instantiated and nothing uses it.
 - [`data/dataframes/`](data/dataframes/) — the CSV inventory used by `main.py`.
 - `data/archive/regression.ipynb` — **archived scratch work, not a tutorial.** This notebook was
   used once to derive the relative-LCI factors in `lci_relative.csv` from regression on external

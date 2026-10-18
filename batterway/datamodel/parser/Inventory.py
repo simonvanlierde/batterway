@@ -180,7 +180,11 @@ class Inventory:
                                                                real_product_dict[p.name].reference_quantity)
                     for bom in fixed_lci_associated.values() for p in bom.products
                 }),
-                output_products=BoM({}),
+                # The outputs are the products the output relative LCI produces, at their reference quantity.
+                output_products=BoM({
+                    influenced: ProductInstance(influenced, influenced.reference_quantity)
+                    for _, influenced in relative_lci_output
+                }),
                 ref_input_to_input=relative_lci_input,
                 ref_input_to_output=relative_lci_output
             )
@@ -188,8 +192,10 @@ class Inventory:
         return cls(real_units, real_product_dict, real_recycling_process)
 
     @staticmethod
-    def parse_possible_input(folder_path: Path):
-        df_fixed_lci = Inventory.__read_csv(folder_path.joinpath("fixed_lci.csv"))
+    def parse_possible_input(folder_path: Path) -> dict[str, list[str]]:
+        """Return, for each fixed LCI id in fixedlci.csv, the names of the products it accepts as input."""
+        df_fixed_lci = Inventory.__read_csv(folder_path.joinpath("fixedlci.csv"))
+        return {lci_id: list(df["product"]) for lci_id, df in df_fixed_lci.groupby("lci_id")}
 
     @staticmethod
     def __read_csv(file_name: Path):

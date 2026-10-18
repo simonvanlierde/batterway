@@ -1,7 +1,7 @@
 import pytest
 
 import tests.unit_test.utils_common as UC
-from batterway.datamodel.generic.process import RecyclingProcess, RecyclingRoute
+from batterway.datamodel.generic.process import Process, RecyclingProcess, RecyclingRoute, Route
 from batterway.datamodel.generic.product import BoM, ProductInstance, Quantity
 
 
@@ -72,3 +72,8 @@ def test_recycling_route_iterates_process_flows():
     steps = [water_step("step_1"), water_step("step_2")]
     assert "water" in str(steps[0])
     RecyclingRoute("route", steps).ensure_consistency()
+
+
+def test_route_str_separates_id_and_steps():
+    steps = [Process(name, BoM({}), BoM({})) for name in ("shred", "leach")]
+    assert str(Route("r1", steps)) == "r1: shred => leach"

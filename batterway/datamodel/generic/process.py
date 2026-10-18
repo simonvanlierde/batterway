@@ -160,7 +160,7 @@ class Route:
             previous_process = process
 
     def __str__(self):
-        return f"{self.route_id}" + ">=".join([p.name for p in self.process_sequence])
+        return f"{self.route_id}: " + " => ".join([p.name for p in self.process_sequence])
 
 
 class RecyclingRoute:

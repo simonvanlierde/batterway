@@ -188,7 +188,7 @@ class ProductInstance:
         return True
 
     def __eq__(self, other: "ProductInstance") -> bool:
-        if isinstance(other, Quantity):
+        if isinstance(other, ProductInstance):
             return self.qty == other.qty and self.product == other.product
         return False
 

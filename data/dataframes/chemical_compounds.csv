@@ -1,5 +1,5 @@
 name;iri;reference_quantity;unit;BoM_id;chemical_formula
-Aluminium sulfate (Al2(SO4)3);http://data.europa.eu/xsp/cn2024/283330000080;1;kg;;AL2(SO4)3
+Aluminium sulfate (Al2(SO4)3);http://data.europa.eu/xsp/cn2024/283330000080;1;kg;;Al2(SO4)3
 Ca(OH)2;http://data.europa.eu/xsp/cn2024/282590110080;1;kg;;Ca(OH)2
 Calcium oxide (CaO);http://data.europa.eu/xsp/cn2024/282590110010;1;kg;;CaO
 Cobalt sulfate (CoSO4);https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:53470;1;kg;;CoSO4

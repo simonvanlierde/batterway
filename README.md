@@ -80,6 +80,10 @@ The model inputs live in [`data/dataframes/`](data/dataframes/) as CSV files: `u
 `products.csv`, `chemical_compounds.csv`, `BoM.csv` (battery bills-of-materials),
 `lci_relative.csv` (per-route flow ratios), `fixedlci.csv` and `recycling_process.csv`.
 
+The three processes in `recycling_process.csv` are alternative routes: each takes batteries in
+and gives recovered materials and waste out, so none feeds another. Run one process at a time.
+`RecyclingRoute.ensure_consistency` can check a chain of processes, but this data has none.
+
 ## Repository layout
 
 - [`batterway/`](batterway/) — the package. The core data model lives in

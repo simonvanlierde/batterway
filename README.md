@@ -10,6 +10,11 @@
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [black]: https://github.com/psf/black
 
+> [!WARNING]
+> This is a 2024 autumn-school prototype. The mass balance does not close: 578 kg of battery go in
+> and a few kg come out, and some flows are negative. `tests/unit_test/test_mass_balance.py` records
+> the gap as expected failures. Do not use the numbers for decisions.
+
 **batterway** is a small Python package for modelling the life-cycle inventory (LCI) of
 lithium-ion battery recycling. It loads battery bills-of-materials and recycling-route flow
 ratios from CSV data, then computes the material in- and out-flows of a recycling process for a

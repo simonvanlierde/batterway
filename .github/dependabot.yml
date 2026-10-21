@@ -24,6 +24,11 @@ updates:
     directory: /
     schedule: {interval: weekly}
     cooldown: {default-days: 7, semver-major-days: 30}
+    # sentier_data_tools 0.5.2 imports SqliteExtDatabase, which peewee 4 removed.
+    # Lift this once sentier_data_tools releases a fix.
+    ignore:
+      - dependency-name: peewee
+        update-types: [version-update:semver-major]
     groups:
       runtime:
         dependency-type: production

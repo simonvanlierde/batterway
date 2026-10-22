@@ -41,9 +41,8 @@ def test_chocolate_recycling_process():
     }
     relative_output_influences = {
         (UC.water, UC.vapor): Quantity(1.0, UC.kg),
-        (UC.water, UC.vapor): Quantity(1.0, UC.kg),
     }
-    r_p = RecyclingProcess(
+    RecyclingProcess(
         "recyclin_test", input_products, output_products, relative_input_influenced, relative_output_influences
     )
 

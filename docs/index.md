@@ -1,10 +1,8 @@
 # batterway
 
-```{button-link} https://docs.brightway.dev
-:color: info
-:expand:
-{octicon}`light-bulb;1em` batterway is a specialized package of the Brightway Software Framework
-```
+batterway is a small Python package for modelling the life-cycle inventory of lithium-ion battery
+recycling. It is a 2024 workshop prototype: the mass balance does not close, so do not use its
+results for decisions. See the [README](https://github.com/simonvanlierde/batterway#readme).
 
 ```{toctree}
 ---

@@ -99,7 +99,6 @@ class Product:
             raise ValueError(err_msg)
 
     def __str__(self):
-        bom_str = str(self.bom) if self.bom else ""
         return f"{self.name}"
 
     def get_final_bom(self) -> "BoM":

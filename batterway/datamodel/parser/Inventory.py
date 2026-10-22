@@ -44,7 +44,7 @@ class Inventory:
                   }
             )
             for x in Inventory.__read_csv(file_name.joinpath("products.csv"))
-            .fillna({"iri": "https://empty.com", "BoM_id": ""})
+            .fillna({"BoM_id": ""})
             .iterrows()
         ]
         # Parse chemical
@@ -58,7 +58,7 @@ class Inventory:
                   }
             )
             for x in Inventory.__read_csv(file_name.joinpath("chemical_compounds.csv"))
-            .fillna({"iri": "https://empty.com", "BoM_id": ""})
+            .fillna({"BoM_id": ""})
             .iterrows()
         ]
 

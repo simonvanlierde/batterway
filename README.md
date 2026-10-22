@@ -36,12 +36,13 @@ use its results for real assessments.
 
 ## Why
 
-batterway is an exercise in open, reproducible LCA on top of the
-[Départ de Sentier](https://www.d-d-s.ch/) / [Sentier](https://vocab.sentier.dev/) ecosystem.
-Units, products and flows carry [Sentier vocabulary](https://vocab.sentier.dev/) IRIs, and the
-package builds on [`sentier_data_tools`](https://pypi.org/project/sentier-data-tools/) so that
-battery and recycling data can be expressed against shared, openly governed vocabularies rather
-than ad-hoc spreadsheets.
+batterway is an exercise in open, reproducible LCA in the
+[Départ de Sentier](https://www.d-d-s.ch/) / [Sentier](https://vocab.sentier.dev/) setting.
+Every unit and product has an IRI, and the model wraps them in the `ProductIRI` and `UnitIRI`
+classes of [`sentier_data_tools`](https://pypi.org/project/sentier-data-tools/). Only the unit
+(`kg`) uses a Sentier vocabulary IRI. The products and chemical compounds use EU Combined
+Nomenclature codes and ChEBI IRIs, and the three NMC battery products use `example.com`
+placeholders. The model does not call the Sentier vocabulary or data services.
 
 ## Installation
 
@@ -113,7 +114,7 @@ This was a collaborative project at the 2024 Départ de Sentier autumn school. S
 created and maintains the repository and authored the core object-oriented data model and CSV
 parser (`product.py`, `process.py`, `Inventory.py`, `parsers.py`). The recycling-route LCI data,
 chemical-compound and material definitions, and additional parser/process work were contributed by
-fellow participants (Leon Ferrari, Johanna Holsten, Samaneh Fayyaz, Kira Fischer). See the git
+fellow participants (Leon Ferrari, Johanna Haupt, Samaneh Fayyaz, Kira Fischer). See the git
 history for the full breakdown.
 
 ## License

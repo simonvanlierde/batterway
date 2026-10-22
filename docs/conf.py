@@ -9,8 +9,8 @@ import datetime
 ### project information ###########################################################################
 
 project = "batterway"
-author = "Brightway Developers"
-copyright = datetime.date.today().strftime("%Y") + ' Brightway Developers'
+author = "The batterway authors"
+copyright = datetime.date.today().strftime("%Y") + ' The batterway authors'
 
 ### project configuration #########################################################################
 
@@ -44,10 +44,7 @@ master_doc = 'index'
 
 ### intersphinx configuration ######################################################################
 
-intersphinx_mapping = {
-    "bw": ("https://docs.brightway.dev/en/latest/", None),
-}    
-
+intersphinx_mapping = {}
 ### theme configuration ############################################################################
 
 html_theme = "sphinx_rtd_theme"
@@ -66,8 +63,6 @@ html_theme_options = {
     'titles_only': False
 }
 
-html_logo = 'https://raw.githubusercontent.com/brightway-lca/brightway-documentation/main/source/_static/logo/BW_all_white_transparent_landscape_wide.svg'
-html_favicon = 'https://github.com/brightway-lca/brightway-documentation/blob/main/source/_static/logo/BW_favicon_500x500.png'
 
 ### extension configuration ########################################################################
 

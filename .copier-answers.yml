@@ -1,0 +1,20 @@
+# Managed by copier. Do not edit by hand. Run: copier update
+_commit: v0.10.0
+_src_path: gh:simonvanlierde/project-templates
+author_email: simonvanlierde@gmail.com
+author_name: Simon van Lierde
+author_orcid: ''
+codecov: true
+dependency_bot: dependabot
+github_user: simonvanlierde
+kind: library
+license: none
+module_name: batterway
+project_description: Batterway LCA models for Depart de Sentier vocabularies
+project_name: batterway
+publish_to_pypi: false
+python_dir: .
+python_min: '3.12'
+python_version: '3.14'
+stacks:
+- python

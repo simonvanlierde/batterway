@@ -60,12 +60,14 @@ class RecyclingProcess(BaseModel):
 
     name: str
     lci_input: ProcessLCIPdt
+
+
 class RecyclingProcessPdt(BaseModel):
     process_name: str
     fixed_input_bom_id: str
     relative_lci: ProcessLCIPdt
 
+
 class FixedLCIPdt(BaseModel):
     lci_id: str
-    ref_to_product_list: dict[str,list[str]]
-
+    ref_to_product_list: dict[str, list[str]]

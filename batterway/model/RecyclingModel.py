@@ -9,29 +9,23 @@ import sentier_data_tools
 from sentier_data_tools import Demand, RunConfig, DatasetKind
 
 
-class RecyclingModel(sentier_data_tools.SentierModel, ):
+class RecyclingModel(
+    sentier_data_tools.SentierModel,
+):
     provides = {
-        #ProductIRI(
+        # ProductIRI(
         #    "http://openenergy-platform.org/ontology/oeo/OEO_00010379"
-        #): "hydrogen",
+        # ): "hydrogen",
     }
     needs = {
-        #ModelTermIRI(
+        # ModelTermIRI(
         #    "https://vocab.sentier.dev/model-terms/electrolyser/capacity_factor"
-        #): "capacity_factor",
-
-        #ProductIRI("https://vocab.sentier.dev/products/electrolyzer"): "electrolyzer",
+        # ): "capacity_factor",
+        # ProductIRI("https://vocab.sentier.dev/products/electrolyzer"): "electrolyzer",
     }
-    def get_recycled_product_inventory(self) -> None:
-        self.get_model_data(
-            product=self.demand.product_iri, kind=DatasetKind.BOM
-        )
-    def __init__(self, recycled_product_iri:str):
-        super().__init__(
-            demand=Demand(
-                recycled_product_iri
-            ),
-            run_config=RunConfig(
 
-            )
-        )
+    def get_recycled_product_inventory(self) -> None:
+        self.get_model_data(product=self.demand.product_iri, kind=DatasetKind.BOM)
+
+    def __init__(self, recycled_product_iri: str):
+        super().__init__(demand=Demand(recycled_product_iri), run_config=RunConfig())

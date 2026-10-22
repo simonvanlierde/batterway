@@ -27,19 +27,19 @@ class Quantity:
         """Check if an object is compatible with the Quantity object."""
         if isinstance(other, Quantity):
             if other.unit != self.unit:
-                err_msg = f"Units {self.unit.name} and {other.unit.name} are not compatible"
+                err_msg = (
+                    f"Units {self.unit.name} and {other.unit.name} are not compatible"
+                )
                 raise ValueError(err_msg)
         elif not isinstance(other, float | int):
-            err_msg = (
-                f"Quantity is not compatible with {other.__class__.__name__}, only with float, int or Quantity objects."
-            )
+            err_msg = f"Quantity is not compatible with {other.__class__.__name__}, only with float, int or Quantity objects."
             raise TypeError(err_msg)
         return True
 
     def __eq__(self, other: "Quantity") -> bool:
         if isinstance(other, Quantity):
             return self.value == other.value and self.unit == other.unit
-        if isinstance(other, int|float):
+        if isinstance(other, int | float):
             return self.value == other
         return False
 
@@ -52,7 +52,9 @@ class Quantity:
         return None
 
     def __radd__(self, other: "Quantity | float | int") -> "Quantity":
-        if self._compatibility_check(other) and (other == 0 or (isinstance(other, Quantity) and other.value == 0)):
+        if self._compatibility_check(other) and (
+            other == 0 or (isinstance(other, Quantity) and other.value == 0)
+        ):
             return self
         return self.__add__(other)
 
@@ -92,7 +94,13 @@ class Product:
     placeholders.
     """
 
-    def __init__(self, name: str, iri: str, reference_quantity: Quantity, bom: "BoM | None" = None):
+    def __init__(
+        self,
+        name: str,
+        iri: str,
+        reference_quantity: Quantity,
+        bom: "BoM | None" = None,
+    ):
         self.name: str = name
         self.iri: ProductIRI = ProductIRI(iri)
         self.reference_quantity: Quantity = reference_quantity
@@ -107,11 +115,13 @@ class Product:
         return f"{self.name}"
 
     def get_final_bom(self) -> "BoM":
-        final_bom = BoM({self: ProductInstance(self,self.reference_quantity)})
+        final_bom = BoM({self: ProductInstance(self, self.reference_quantity)})
         if self.bom:
             final_bom = BoM({})
             for product, p_instance in self.bom.product_quantities.items():
-                if product.bom is None:  # Within the model, this means the product is a raw material
+                if (
+                    product.bom is None
+                ):  # Within the model, this means the product is a raw material
                     final_bom += BoM({product: p_instance})
                 else:
                     final_bom += product.get_final_bom() * p_instance.qty
@@ -122,39 +132,47 @@ class BoM:
     """A Bill of Materials with a dictionary of products and quantities."""
 
     def __init__(self, product_quantities: dict[Product, "ProductInstance"]):
-        self.product_quantities: dict[Product, "ProductInstance"] =  product_quantities
+        self.product_quantities: dict[Product, "ProductInstance"] = product_quantities
         self.products = [p.product for p in product_quantities.values()]
-        self.__str_to_product: dict[str,Product] = { p.name : p for p in self.products}
-        #self.quantity_total = sum(x.qty.value for x in product_quantities.values())
+        self.__str_to_product: dict[str, Product] = {p.name: p for p in self.products}
+        # self.quantity_total = sum(x.qty.value for x in product_quantities.values())
+
     @property
     def quantity_total(self) -> float:
         return sum(x.qty.value for x in self.product_quantities.values())
 
-    def set_quantity_of_product(self,product_name,qty):
-        self.product_quantities[self.__str_to_product[product_name]].qty = Quantity(qty,self.__str_to_product[product_name].reference_quantity.unit)
+    def set_quantity_of_product(self, product_name, qty):
+        self.product_quantities[self.__str_to_product[product_name]].qty = Quantity(
+            qty, self.__str_to_product[product_name].reference_quantity.unit
+        )
+
     def __str__(self) -> str:
         return "\n".join([f"{p.name}: {q}" for p, q in self.product_quantities.items()])
 
     def __add__(self, other: "BoM") -> "BoM":
         """Add two BoM objects together and return a new BoM."""
         if not isinstance(other, BoM):
-            err_msg = f"Can only add BoM objects together, not {other.__class__.__name__}"
+            err_msg = (
+                f"Can only add BoM objects together, not {other.__class__.__name__}"
+            )
             raise TypeError(err_msg)
             return None
 
-        combined_quantities = dict(Counter(self.product_quantities) + Counter(other.product_quantities))
+        combined_quantities = dict(
+            Counter(self.product_quantities) + Counter(other.product_quantities)
+        )
         return BoM(combined_quantities)
 
     def __mul__(self, other: "Quantity | float | int") -> "BoM":
         """Multiply a BoM by a Quantity object and return a new BoM."""
         if not isinstance(other, Quantity | float | int):
-            err_msg = (
-                f"Can only multiply BoM objects with int, float, or Quantity objects, not {other.__class__.__name__}"
-            )
+            err_msg = f"Can only multiply BoM objects with int, float, or Quantity objects, not {other.__class__.__name__}"
             raise TypeError(err_msg)
             return None
 
-        multiplied_quantities = {p: q * other for p, q in self.product_quantities.items()}
+        multiplied_quantities = {
+            p: q * other for p, q in self.product_quantities.items()
+        }
         return BoM(multiplied_quantities)
 
     def __contains__(self, item):
@@ -175,22 +193,30 @@ class ProductInstance:
     def __init__(self, product: Product, quantity: Quantity):
         self.product: Product = product
         self.qty: Quantity = quantity
-        self.bom: BoM = BoM(
-            {p: qty * self.qty for p, qty in self.product.bom.product_quantities.items()}) if self.product.bom else {}
+        self.bom: BoM = (
+            BoM(
+                {
+                    p: qty * self.qty
+                    for p, qty in self.product.bom.product_quantities.items()
+                }
+            )
+            if self.product.bom
+            else {}
+        )
 
     def get_final_bom(self) -> BoM:
         return self.product.get_final_bom() * self.qty
 
-    def _compatibility_check(self, other: "ProductInstance | Quantity | float | int") -> bool:
+    def _compatibility_check(
+        self, other: "ProductInstance | Quantity | float | int"
+    ) -> bool:
         """Check if an object is compatible with the Quantity object."""
         if isinstance(other, ProductInstance):
             if other.product != self.product:
                 err_msg = f"Units {self.product.name} and {other.product.name} are not compatible"
                 raise ValueError(err_msg)
         elif not isinstance(other, float | int | Quantity):
-            err_msg = (
-                f"Quantity is not compatible with {other.__class__.__name__}, only with float, int or Quantity objects."
-            )
+            err_msg = f"Quantity is not compatible with {other.__class__.__name__}, only with float, int or Quantity objects."
             raise TypeError(err_msg)
         return True
 
@@ -199,7 +225,9 @@ class ProductInstance:
             return self.qty == other.qty and self.product == other.product
         return False
 
-    def __add__(self, other: "ProductInstance | Quantity | float | int") -> "ProductInstance":
+    def __add__(
+        self, other: "ProductInstance | Quantity | float | int"
+    ) -> "ProductInstance":
         if self._compatibility_check(other):
             if isinstance(other, ProductInstance):
                 return ProductInstance(self.product, self.qty + other.qty)
@@ -209,18 +237,20 @@ class ProductInstance:
                 return ProductInstance(self.product, self.qty + other)
         return None
 
-    def __radd__(self, other: "ProductInstance | Quantity | float | int") -> "ProductInstance":
-        if (self._compatibility_check(other)
-                and (
-                        other == 0 or (isinstance(other, Quantity) and other.value == 0)
-                        or
-                        (isinstance(other, ProductInstance) and other.qty == 0)
-                )
+    def __radd__(
+        self, other: "ProductInstance | Quantity | float | int"
+    ) -> "ProductInstance":
+        if self._compatibility_check(other) and (
+            other == 0
+            or (isinstance(other, Quantity) and other.value == 0)
+            or (isinstance(other, ProductInstance) and other.qty == 0)
         ):
             return self
         return self.__add__(other)
 
-    def __sub__(self, other: "ProductInstance | Quantity | float | int") -> "ProductInstance":
+    def __sub__(
+        self, other: "ProductInstance | Quantity | float | int"
+    ) -> "ProductInstance":
         if self._compatibility_check(other):
             if isinstance(other, Quantity):
                 return ProductInstance(self.product, self.qty - other.value)
@@ -230,7 +260,9 @@ class ProductInstance:
                 return ProductInstance(self.product, self.qty - other)
         return None
 
-    def __mul__(self, other: "ProductInstance | Quantity | float | int") -> "ProductInstance":
+    def __mul__(
+        self, other: "ProductInstance | Quantity | float | int"
+    ) -> "ProductInstance":
         if self._compatibility_check(other):
             if isinstance(other, ProductInstance):
                 return ProductInstance(self.product, self.qty * other.qty)
@@ -260,7 +292,9 @@ class ChemicalCompound(Product):
     In the data the IRI is a ChEBI IRI.
     """
 
-    def __init__(self, name: str, iri: URIRef, reference_quantity: Quantity, formula: str):
+    def __init__(
+        self, name: str, iri: URIRef, reference_quantity: Quantity, formula: str
+    ):
         super().__init__(name, iri, reference_quantity, bom=None)
         self.__chemical_formula: Substance = Substance.from_formula(formula)
         self.molar_mass = self.__chemical_formula.mass

@@ -1,0 +1,17 @@
+{
+  "@context": "https://w3id.org/codemeta/4.0",
+  "@type": "SoftwareSourceCode",
+  "name": "batterway",
+  "description": "Batterway LCA models for Depart de Sentier vocabularies",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Simon",
+      "familyName": "van Lierde",
+      "email": "simonvanlierde@gmail.com"
+    }
+  ],
+  "codeRepository": "https://github.com/simonvanlierde/batterway",
+  "issueTracker": "https://github.com/simonvanlierde/batterway/issues",
+  "programmingLanguage": "Python"
+}

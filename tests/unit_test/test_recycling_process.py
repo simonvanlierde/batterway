@@ -1,7 +1,12 @@
 import pytest
 
 import tests.unit_test.utils_common as UC
-from batterway.datamodel.generic.process import Process, RecyclingProcess, RecyclingRoute, Route
+from batterway.datamodel.generic.process import (
+    Process,
+    RecyclingProcess,
+    RecyclingRoute,
+    Route,
+)
 from batterway.datamodel.generic.product import BoM, ProductInstance, Quantity
 
 
@@ -18,19 +23,23 @@ def test_recycling_process_relative_lci():
     output_products = BoM({})
     relative_output_influences = {(UC.water, UC.vapor): Quantity(3.0, UC.kg)}
     r_p = RecyclingProcess(
-        "recycling_test", input_products, output_products, relative_input_influenced, relative_output_influences
+        "recycling_test",
+        input_products,
+        output_products,
+        relative_input_influenced,
+        relative_output_influences,
     )
     with pytest.raises(ValueError, match="Empty inputs"):
         r_p.update_fixed_input_lci({})
-
-
 
 
 def test_chocolate_recycling_process():
     input_products = BoM(
         {
             UC.cookie: ProductInstance(UC.cookie, Quantity(1.0, UC.kg)),
-            UC.schwarze_kuchen: ProductInstance(UC.schwarze_kuchen, Quantity(1.0, UC.kg)),
+            UC.schwarze_kuchen: ProductInstance(
+                UC.schwarze_kuchen, Quantity(1.0, UC.kg)
+            ),
             UC.brownie: ProductInstance(UC.brownie, Quantity(1.0, UC.kg)),
         }
     )
@@ -43,9 +52,12 @@ def test_chocolate_recycling_process():
         (UC.water, UC.vapor): Quantity(1.0, UC.kg),
     }
     RecyclingProcess(
-        "recyclin_test", input_products, output_products, relative_input_influenced, relative_output_influences
+        "recyclin_test",
+        input_products,
+        output_products,
+        relative_input_influenced,
+        relative_output_influences,
     )
-
 
 
 def test_missing_output_influencer_is_named(capsys):
@@ -65,7 +77,11 @@ def test_recycling_route_iterates_process_flows():
     def water_step(name):
         water = BoM({UC.water: ProductInstance(UC.water, Quantity(1.0, UC.kg))})
         return RecyclingProcess(
-            name, water, water, {(UC.water, UC.heat): Quantity(1.0, UC.kg)}, {(UC.water, UC.vapor): Quantity(1.0, UC.kg)}
+            name,
+            water,
+            water,
+            {(UC.water, UC.heat): Quantity(1.0, UC.kg)},
+            {(UC.water, UC.vapor): Quantity(1.0, UC.kg)},
         )
 
     steps = [water_step("step_1"), water_step("step_2")]

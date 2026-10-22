@@ -1,4 +1,9 @@
 [project]
+name = "batterway"
+version = "0.0.1"
+description = "Batterway LCA models for Depart de Sentier vocabularies"
+readme = "README.md"
+requires-python = ">=3.12"
 authors = [
     { name = "Simon van Lierde", email = "simonvanlierde@gmail.com" },
     { name = "Leon Ferrari", email = "leon.ferrari@vub.be" },
@@ -6,12 +11,8 @@ authors = [
     { name = "Samaneh Fayyaz", email = "sfay@igt.sdu.dk" },
     { name = "Kira Fischer", email = "kira.fischer@ist.fraunhofer.de" },
 ]
-name = "batterway"
 maintainers = [{ name = "Simon van Lierde", email = "simonvanlierde@gmail.com" }]
-description = "Batterway LCA models for Depart de Sentier vocabularies"
-readme = "README.md"
-version = "0.0.1"
-requires-python = ">=3.11"
+license = "GPL-3.0-or-later"
 dependencies = [
     "chempy",
     "pandas",
@@ -20,45 +21,98 @@ dependencies = [
     "peewee<4",
     "pydantic>=2",
     "rdflib>=7",
-    "sentier_data_tools"
+    "sentier_data_tools",
 ]
+# PyPI rejects unknown classifiers, so this one blocks an accidental upload.
+# Delete it (and set publish_to_pypi) to publish.
+classifiers = ["Private :: Do Not Upload"]
 
 [project.urls]
-source   = "https://github.com/simonvanlierde/batterway"
-homepage = "https://github.com/simonvanlierde/batterway"
-tracker  = "https://github.com/simonvanlierde/batterway/issues"
+Source = "https://github.com/simonvanlierde/batterway"
+Homepage = "https://github.com/simonvanlierde/batterway"
+Issues = "https://github.com/simonvanlierde/batterway/issues"
 
-[project.optional-dependencies]
-testing = ["pytest", "pytest-cov", "python-coveralls"]
-dev     = ["pre-commit", "pylint", "pytest", "pytest-cov", "pytest-randomly"]
+[dependency-groups]
+dev = [
+  "pytest>=9.1.1",
+  "pytest-cov>=7.1.0",
+  "ruff>=0.16.10",
+  "ty>=0.0.84",
+]
+docs = [
+  "myst-parser>=4.0.0",
+  "sphinx>=8.1.0",
+  "sphinx-autoapi>=3.4.0",
+  "sphinx-copybutton>=0.5.2",
+  "sphinx-design>=0.6.1",
+  "sphinx-rtd-theme>=3.0.0",
+]
 
-[tool.pytest.ini_options]
-addopts       = "--cov batterway --cov-report term-missing --cov-report xml --verbose"
-norecursedirs = [".tox", "build", "dist"]
-testpaths     = ["tests"]
-# Not an installed package: tests import batterway from the repo root.
-pythonpath    = ["."]
+# Research projects are packaged too, so notebooks can `import batterway`
+# without sys.path edits.
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
 
-[tool.flake8]
-# Some sane defaults for the code style checker flake8
-max_line_length = 88
-extend_ignore   = ["E203", "W503"]
-# ^  Black-compatible
-#    E203 and W503 have edge cases handled by black
-exclude = [".eggs", ".tox", "build", "dist", "docs/conf.py"]
+# Resolve only releases at least a week old: a compromised release is usually
+# caught and yanked within that window. Dependabot's cooldown waits the same. Set here,
+# not user-wide, so every machine writes the same uv.lock.
+[tool.uv]
+exclude-newer = "1 week"
+# NOTE: pillow 13.0 and certifi 2026.10.19 fix advisories that `uv audit` fails CI on; drop
+# this once they are a week old.
+exclude-newer-package = { pillow = false, certifi = false }
 
-[tool.black]
+# uv_build derives the package dir from the normalized project.name, so pin it
+# for a module_name that differs.
+[tool.uv.build-backend]
+module-name = "batterway"
+module-root = ""
+
+# NOTE: self-contained ruff config, deliberately not extended from any shared base.
+# No target-version: ruff derives it from requires-python above.
+[tool.ruff]
 line-length = 88
+# Archived notebooks are data; docs/ waits for the docs-build fix.
+extend-exclude = ["data", "docs"]
 
-[tool.isort]
-profile                        = "black"
-line_length                    = 88
-multi_line_output              = 3
-include_trailing_comma         = true
-force_grid_wrap                = 0
-use_parentheses                = true
-ensure_newline_before_comments = true
+[tool.ruff.format]
+docstring-code-format = true
 
 [tool.ruff.lint]
 # Pyflakes plus the core pycodestyle errors; the style rules stay off for this prototype.
 select = ["E4", "E7", "E9", "F"]
+
+[tool.pytest.ini_options]
+addopts = ["-ra", "--strict-config", "--strict-markers", "--import-mode=importlib"]
+testpaths = ["tests"]
+# Not an installed package under test discovery: tests import batterway from the repo root.
+pythonpath = ["."]
+
+# Coverage is opt-in via `pytest --cov` (`just py-cov`), not addopts, because it
+# slows every plain test run. No fail_under until there is a suite worth setting
+# one against.
+[tool.coverage.run]
+source = ["batterway"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+exclude_also = ["if TYPE_CHECKING:", "raise NotImplementedError"]
+
+# NOTE: baseline for the prototype's type errors (37 at adoption). They stay warnings so
+# `ty check` gates new rules, not this backlog. Fix them, then delete this table.
+[tool.ty.rules]
+invalid-argument-type = "warn"
+invalid-assignment = "warn"
+invalid-method-override = "warn"
+invalid-return-type = "warn"
+invalid-type-form = "warn"
+missing-argument = "warn"
+no-matching-overload = "warn"
+too-many-positional-arguments = "warn"
+unresolved-attribute = "warn"
+unsupported-operator = "warn"
+
+[tool.ty.terminal]
+error-on-warning = false

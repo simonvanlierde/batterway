@@ -40,7 +40,7 @@ Request features on the [Issue Tracker][Issue Tracker].
 Install the development requirements:
 
 ```console
-$ uv sync --extra dev
+uv sync
 ```
 
 ## How to build the documentation locally
@@ -57,19 +57,17 @@ sphinx-build docs docs/_build
 
 ## How to test the project
 
-
 1. Install the test requirements:
 
 ```console
-$ uv sync --extra testing
+uv sync
 ```
 
 2. Run the full test suite:
 
 ```console
-$ uv run pytest
+uv run pytest
 ```
-
 
 Unit tests are located in the _tests_ directory,
 and are written using the [pytest][pytest] testing framework.
@@ -84,19 +82,8 @@ Your pull request needs to meet the following guidelines for acceptance:
 - Include unit tests.
 - If your changes add functionality, update the documentation accordingly.
 
-To run linting and code formatting checks before committing your change, you can install pre-commit as a Git hook by running one of following commands, depending on your dependencies manager:
-
-```console
-# conda or mamba
-$ conda install pre-commit
-```
-
-or
-
-```
-$ pip install pre-commit
-```
-
+To run the checks CI runs, use `just check`. To run the Git hooks before each commit,
+install [prek](https://prek.j178.dev) and run `prek install`.
 
 It is recommended to open an issue before starting work on anything.
 This will allow a chance to talk it over with the owners and validate your approach.

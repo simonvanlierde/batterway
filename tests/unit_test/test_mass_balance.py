@@ -26,7 +26,11 @@ def run_route(name):
 @pytest.mark.parametrize("route", ["recycling_process_1", "recycling_process_2"])
 def test_mass_balance_closes(route):
     _, out_bom = run_route(route)
-    mass_out = sum(i.qty.value for i in out_bom.product_quantities.values() if i.product.name not in NOT_MASS)
+    mass_out = sum(
+        i.qty.value
+        for i in out_bom.product_quantities.values()
+        if i.product.name not in NOT_MASS
+    )
     assert mass_out == pytest.approx(MASS_IN_KG, rel=TOLERANCE)
 
 

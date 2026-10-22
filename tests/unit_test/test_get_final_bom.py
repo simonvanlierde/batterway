@@ -16,7 +16,9 @@ cell_nmc_333 = Product(
         }
     ),
 )
-leaf_no_bom_product = Product(name="cell_type", iri="cell_type.com", reference_quantity=Quantity(1.0, uc.kg))
+leaf_no_bom_product = Product(
+    name="cell_type", iri="cell_type.com", reference_quantity=Quantity(1.0, uc.kg)
+)
 battery_nmc_333 = Product(
     name="battery_type",
     iri="battery_type.com",
@@ -26,7 +28,9 @@ battery_nmc_333 = Product(
             cell_nmc_333: ProductInstance(cell_nmc_333, Quantity(0.8, uc.kg)),
             uc.manganese: ProductInstance(uc.manganese, Quantity(0.1, uc.kg)),
             uc.steel: ProductInstance(uc.steel, Quantity(0.1, uc.kg)),
-            leaf_no_bom_product: ProductInstance(leaf_no_bom_product, Quantity(0.1, uc.kg)),
+            leaf_no_bom_product: ProductInstance(
+                leaf_no_bom_product, Quantity(0.1, uc.kg)
+            ),
         }
     ),
 )
@@ -52,7 +56,9 @@ def test_product_bom() -> None:
         assert material in final_bom.product_quantities
         print(quantity)
         print(final_bom.product_quantities[material])
-        assert final_bom.product_quantities[material].qty.value == pytest.approx(quantity.value)
+        assert final_bom.product_quantities[material].qty.value == pytest.approx(
+            quantity.value
+        )
 
 
 def test_product_instance_bom() -> None:
@@ -70,9 +76,9 @@ def test_product_instance_bom() -> None:
     # Check if the BoM is correct
     for material, quantity in expected_bom.items():
         assert material in final_bom.product_quantities
-        assert final_bom.product_quantities[material].qty.value == pytest.approx(quantity.value)
-
-
+        assert final_bom.product_quantities[material].qty.value == pytest.approx(
+            quantity.value
+        )
 
 
 def test_quantity_rejects_incompatible_type() -> None:
@@ -83,5 +89,9 @@ def test_quantity_rejects_incompatible_type() -> None:
 
 def test_product_instance_equality() -> None:
     """Two instances of the same product and quantity are equal."""
-    assert ProductInstance(uc.steel, Quantity(2.0, uc.kg)) == ProductInstance(uc.steel, Quantity(2.0, uc.kg))
-    assert ProductInstance(uc.steel, Quantity(2.0, uc.kg)) != ProductInstance(uc.steel, Quantity(3.0, uc.kg))
+    assert ProductInstance(uc.steel, Quantity(2.0, uc.kg)) == ProductInstance(
+        uc.steel, Quantity(2.0, uc.kg)
+    )
+    assert ProductInstance(uc.steel, Quantity(2.0, uc.kg)) != ProductInstance(
+        uc.steel, Quantity(3.0, uc.kg)
+    )

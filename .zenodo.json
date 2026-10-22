@@ -1,0 +1,12 @@
+{
+  "upload_type": "software",
+  "title": "batterway",
+  "description": "Batterway LCA models for Depart de Sentier vocabularies",
+  "creators": [
+    {
+      "name": "van Lierde, Simon"
+    }
+  ],
+  "access_right": "open",
+  "license": "GPL-3.0-or-later"
+}

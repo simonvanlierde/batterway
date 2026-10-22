@@ -1,5 +1,7 @@
 # batterway
 
+A prototype built at the 2024 Départ de Sentier autumn school. It is not developed further as a tool.
+
 [![Python Version](https://img.shields.io/badge/python-%3E%3D3.11-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](LICENSE)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)][pre-commit]

@@ -80,8 +80,8 @@ process = inventory.get_process("recycling_process_1")
 process.update_fixed_input_lci({"Battery_NMC442": 578.0})
 
 # Computed flows are printed and also stored on the process
-process.computed_input_bom    # reagents / inputs required
-process.computed_output_bom   # recovered materials / outputs
+process.computed_input_bom  # reagents / inputs required
+process.computed_output_bom  # recovered materials / outputs
 ```
 
 The model inputs live in [`data/dataframes/`](data/dataframes/) as CSV files: `units.csv`,

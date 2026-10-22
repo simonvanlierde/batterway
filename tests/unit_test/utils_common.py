@@ -1,4 +1,10 @@
-from batterway.datamodel.generic.product import BoM, Product, ProductInstance, Quantity, Unit
+from batterway.datamodel.generic.product import (
+    BoM,
+    Product,
+    ProductInstance,
+    Quantity,
+    Unit,
+)
 
 # Define the Unit for kg
 kg = Unit("kg", "kg_IRI")

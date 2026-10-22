@@ -39,6 +39,14 @@ dev = [
   "ruff>=0.16.10",
   "ty>=0.0.84",
 ]
+docs = [
+  "myst-parser>=4.0.0",
+  "sphinx>=8.1.0",
+  "sphinx-autoapi>=3.4.0",
+  "sphinx-copybutton>=0.5.2",
+  "sphinx-design>=0.6.1",
+  "sphinx-rtd-theme>=3.0.0",
+]
 
 # Research projects are packaged too, so notebooks can `import batterway`
 # without sys.path edits.

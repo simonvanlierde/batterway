@@ -22,3 +22,7 @@ py-cov:
 # Tests only; extra arguments reach pytest (`just py-test -k name`).
 py-test *args:
     uv run pytest {{ args }}
+
+# Build the docs with warnings as errors, into docs/_build/html.
+py-docs:
+    uv run --group docs sphinx-build -W -b html docs docs/_build/html

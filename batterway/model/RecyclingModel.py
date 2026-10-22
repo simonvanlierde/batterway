@@ -6,7 +6,7 @@ Nothing in the package imports it.
 """
 
 import sentier_data_tools
-from sentier_data_tools import Demand, RunConfig, DatasetKind, ProductIRI
+from sentier_data_tools import Demand, RunConfig, DatasetKind
 
 
 class RecyclingModel(sentier_data_tools.SentierModel, ):
@@ -23,7 +23,7 @@ class RecyclingModel(sentier_data_tools.SentierModel, ):
         #ProductIRI("https://vocab.sentier.dev/products/electrolyzer"): "electrolyzer",
     }
     def get_recycled_product_inventory(self) -> None:
-        bom_electrolysis = self.get_model_data(
+        self.get_model_data(
             product=self.demand.product_iri, kind=DatasetKind.BOM
         )
     def __init__(self, recycled_product_iri:str):

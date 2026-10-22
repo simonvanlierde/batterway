@@ -39,10 +39,10 @@ use its results for real assessments.
 batterway is an exercise in open, reproducible LCA in the
 [Départ de Sentier](https://www.d-d-s.ch/) / [Sentier](https://vocab.sentier.dev/) setting.
 Every unit and product has an IRI, and the model wraps them in the `ProductIRI` and `UnitIRI`
-classes of [`sentier_data_tools`](https://pypi.org/project/sentier-data-tools/). Only the unit
-(`kg`) uses a Sentier vocabulary IRI. The products and chemical compounds use EU Combined
-Nomenclature codes and ChEBI IRIs, and the three NMC battery products use `example.com`
-placeholders. The model does not call the Sentier vocabulary or data services.
+classes of [`sentier_data_tools`](https://pypi.org/project/sentier-data-tools/). The unit
+(`kg`) and the wastewater flow use Sentier vocabulary IRIs. The other products use EU Combined
+Nomenclature codes, the chemical compounds use ChEBI IRIs, and the three NMC battery products use
+`example.com` placeholders. The model does not call the Sentier vocabulary or data services.
 
 ## Installation
 

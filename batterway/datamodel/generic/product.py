@@ -9,7 +9,7 @@ from sentier_data_tools.iri import ProductIRI, UnitIRI
 
 
 class Unit:
-    """A unit of measurement with sentier.dev URI."""
+    """A unit of measurement with a unit IRI (the data uses a Sentier ``kg`` IRI)."""
 
     def __init__(self, name: str, iri: str):
         self.name = name
@@ -87,7 +87,12 @@ class Quantity:
 
 
 class Product:
-    """A product with a name, sentier.dev ProductIRI, reference quantity and a BoM."""
+    """A product with a name, IRI, reference quantity and a BoM.
+
+    The IRI is wrapped in a ``ProductIRI``. In the data it is an EU Combined Nomenclature 2024
+    code or a Sentier flow IRI (wastewater), and the NMC battery products use example.com
+    placeholders.
+    """
 
     def __init__(
         self,
@@ -282,7 +287,10 @@ class ProductInstance:
 
 
 class ChemicalCompound(Product):
-    """A chemical compound with a name, sentier.dev ProductIRI, and chemical formula."""
+    """A chemical compound with a name, IRI, reference quantity and chemical formula.
+
+    In the data the IRI is a ChEBI IRI.
+    """
 
     def __init__(
         self, name: str, iri: URIRef, reference_quantity: Quantity, formula: str

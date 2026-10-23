@@ -107,6 +107,9 @@ and gives recovered materials and waste out, so none feeds another. Run one proc
   used once to derive the relative-LCI factors in `lci_relative.csv` from regression on external
   spreadsheet data; it does not import `batterway` and is not part of the analysis API. Start from
   `main.py` and the `batterway/` package, not this notebook.
+- `data/archive/Recycling_Assessment_Tool_v3_2024.xlsx` — the Recycling Assessment Tool workbook
+  (version 3, 2024) by Steffen Blömeke and Christian Scheller, TU Braunschweig. The GPL-3.0 licence
+  covers the code in this repository, not this workbook.
 
 ## Authorship
 

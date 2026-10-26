@@ -59,9 +59,9 @@ build-backend = "uv_build"
 # not user-wide, so every machine writes the same uv.lock.
 [tool.uv]
 exclude-newer = "1 week"
-# NOTE: pillow 13.0 and certifi 2026.10.19 fix advisories that `uv audit` fails CI on; drop
-# this once they are a week old.
-exclude-newer-package = { pillow = false, certifi = false }
+# NOTE: pillow 13.0, certifi 2026.10.19 and setuptools 84.1.0 fix advisories that `uv audit`
+# fails CI on; drop this once they are a week old.
+exclude-newer-package = { pillow = false, certifi = false, setuptools = false }
 
 # uv_build derives the package dir from the normalized project.name, so pin it
 # for a module_name that differs.

@@ -5,9 +5,9 @@ description = "Batterway LCA models for Depart de Sentier vocabularies"
 readme = "README.md"
 requires-python = ">=3.12"
 authors = [
-    { name = "Simon van Lierde", email = "code@duinlab.nl" },
     { name = "Leon Ferrari", email = "leon.ferrari@vub.be" },
     { name = "Johanna Haupt", email = "johanna.haupt@tu-braunschweig.de" },
+    { name = "Simon van Lierde", email = "code@duinlab.nl" },
     { name = "Samaneh Fayyaz", email = "sfay@igt.sdu.dk" },
     { name = "Kira Fischer", email = "kira.fischer@ist.fraunhofer.de" },
 ]

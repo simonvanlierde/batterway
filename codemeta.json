@@ -6,6 +6,12 @@
   "author": [
     {
       "@type": "Person",
+      "givenName": "Simon",
+      "familyName": "van Lierde",
+      "email": "code@duinlab.nl"
+    },
+    {
+      "@type": "Person",
       "givenName": "Leon",
       "familyName": "Ferrari"
     },
@@ -13,12 +19,6 @@
       "@type": "Person",
       "givenName": "Johanna",
       "familyName": "Haupt"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Simon",
-      "familyName": "van Lierde",
-      "email": "code@duinlab.nl"
     },
     {
       "@type": "Person",

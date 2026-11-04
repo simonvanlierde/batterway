@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- The licence is now BSD-3-Clause, was GPL-3.0-or-later. Brightway is BSD-3-Clause, and the
+  licence should not stop Brightway users building on batterway.
+
 ### Fixed
 
 - Adding an incompatible type to a `Quantity` or `ProductInstance` now raises `TypeError`

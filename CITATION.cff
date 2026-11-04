@@ -25,4 +25,4 @@ authors:
     given-names: Kira
     email: kira.fischer@ist.fraunhofer.de
 repository-code: https://github.com/simonvanlierde/batterway
-license: GPL-3.0-or-later
+license: BSD-3-Clause

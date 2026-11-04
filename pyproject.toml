@@ -12,7 +12,7 @@ authors = [
     { name = "Kira Fischer", email = "kira.fischer@ist.fraunhofer.de" },
 ]
 maintainers = [{ name = "Simon van Lierde", email = "code@duinlab.nl" }]
-license = "GPL-3.0-or-later"
+license = "BSD-3-Clause"
 dependencies = [
     "chempy",
     "pandas",

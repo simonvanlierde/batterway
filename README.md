@@ -3,7 +3,7 @@
 A prototype built at the 2024 Départ de Sentier autumn school. It is not developed further as a tool.
 
 [![Python Version](https://img.shields.io/badge/python-%3E%3D3.12-blue)](https://www.python.org/)
-[![License](https://img.shields.io/badge/license-GPL--3.0-blue)](LICENSE)
+[![License](https://img.shields.io/badge/license-BSD--3--Clause-blue)](LICENSE)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)][pre-commit]
 [![Black](https://img.shields.io/badge/code%20style-black-000000.svg)][black]
 [![CI](https://github.com/simonvanlierde/batterway/actions/workflows/python.yml/badge.svg)](https://github.com/simonvanlierde/batterway/actions/workflows/python.yml)
@@ -109,7 +109,7 @@ and gives recovered materials and waste out, so none feeds another. Run one proc
   spreadsheet data; it does not import `batterway` and is not part of the analysis API. Start from
   `main.py` and the `batterway/` package, not this notebook.
 - `data/archive/Recycling_Assessment_Tool_v3_2024.xlsx` — the Recycling Assessment Tool workbook
-  (version 3, 2024) by Steffen Blömeke and Christian Scheller, TU Braunschweig. The GPL-3.0 licence
+  (version 3, 2024) by Steffen Blömeke and Christian Scheller, TU Braunschweig. The BSD-3-Clause licence
   covers the code in this repository, not this workbook.
 
 ## Authorship
@@ -123,7 +123,7 @@ history for the full breakdown.
 
 ## License
 
-Distributed under the terms of the [GPL-3.0 license](LICENSE); batterway is free and open source
+Distributed under the terms of the [BSD-3-Clause license](LICENSE); batterway is free and open source
 software.
 
 ## Issues

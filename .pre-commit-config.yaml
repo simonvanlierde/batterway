@@ -32,7 +32,7 @@ repos:
 
   # gitleaks' successor from the same authors. gitleaks takes security fixes only.
   - repo: https://github.com/betterleaks/betterleaks
-    rev: 81aff7a638638aae3a659845d089043e1d8fe9ac # frozen: v1.9.0
+    rev: 8d77e1712fb06fd14444cc648686f1d5655e28a8 # frozen: v1.10.0
     hooks:
       - id: betterleaks
 
@@ -63,7 +63,7 @@ repos:
     hooks:
       - id: nbstripout
   - repo: https://github.com/rvben/rumdl-pre-commit
-    rev: b0cff962ee693b9e612c097d22e71e0cba127447 # frozen: v0.3.2
+    rev: 048965b9cf986f25ab963d388bc94cf44e381686 # frozen: v0.3.3
     hooks:
       - id: rumdl
         args: [--fix]
@@ -96,6 +96,6 @@ repos:
 
   # The citation files and package manifests must agree (CITATION.cff is the source).
   - repo: https://github.com/simonvanlierde/citesync
-    rev: 27c649e635302721583fd9a043865bfb98116225 # frozen: v0.4.0
+    rev: a043e5c57f5dcbf36112fff1f9de4946683e5860 # frozen: v0.5.0
     hooks:
       - id: citesync

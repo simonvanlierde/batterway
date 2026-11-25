@@ -32,7 +32,7 @@ repos:
 
   # gitleaks' successor from the same authors. gitleaks takes security fixes only.
   - repo: https://github.com/betterleaks/betterleaks
-    rev: 81aff7a638638aae3a659845d089043e1d8fe9ac # frozen: v1.9.0
+    rev: 39d5bdcf34db54e944facac5cf6e8b03db5e2b99 # frozen: v1.10.1
     hooks:
       - id: betterleaks
 
@@ -59,11 +59,11 @@ repos:
       - id: check-citation-file-format
 
   - repo: https://github.com/kynan/nbstripout
-    rev: 34071b78c181af3bf5af955c1426466e096fc3db # frozen: 0.9.1
+    rev: 512fa4ac6e4674f3a748e7dd5a546c037ec39edf # frozen: 0.9.2
     hooks:
       - id: nbstripout
   - repo: https://github.com/rvben/rumdl-pre-commit
-    rev: b0cff962ee693b9e612c097d22e71e0cba127447 # frozen: v0.3.2
+    rev: df5a947a3af0dba56640e644c6b9316184749168 # frozen: v0.3.4
     hooks:
       - id: rumdl
         args: [--fix]
@@ -96,6 +96,6 @@ repos:
 
   # The citation files and package manifests must agree (CITATION.cff is the source).
   - repo: https://github.com/simonvanlierde/citesync
-    rev: 27c649e635302721583fd9a043865bfb98116225 # frozen: v0.4.0
+    rev: ba91852652f14682078fc0d93d7123ad5131d289 # frozen: v0.6.0
     hooks:
       - id: citesync

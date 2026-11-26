@@ -15,6 +15,7 @@ Here is a list of important resources for contributors:
 [Source Code]: https://github.com/simonvanlierde/batterway
 [Documentation]: https://batterway.readthedocs.io/
 [Issue Tracker]: https://github.com/simonvanlierde/batterway/issues
+[Code of Conduct]: https://github.com/simonvanlierde/batterway/blob/main/CODE_OF_CONDUCT.md
 
 ## How to report a bug
 
@@ -79,11 +80,12 @@ Open a [pull request] to submit changes to this project.
 Your pull request needs to meet the following guidelines for acceptance:
 
 - The test suite must pass without errors and warnings.
-- Include unit tests.
+- Each behavior change needs a new or updated test.
 - If your changes add functionality, update the documentation accordingly.
 
-To run the checks CI runs, use `just check`. To run the Git hooks before each commit,
-install [prek](https://prek.j178.dev) and run `prek install`.
+Use `just check` to run the checks from CI, including the Ruff lint and formatting rules in
+`pyproject.toml`. Install [prek](https://prek.j178.dev) and run `prek install` to run the Git hooks
+before each commit.
 
 It is recommended to open an issue before starting work on anything.
 This will allow a chance to talk it over with the owners and validate your approach.

@@ -1,0 +1,9 @@
+# Questions go to CONTRIBUTING.md, so the issue list holds bugs and feature requests only.
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question
+    url: https://github.com/simonvanlierde/batterway/blob/main/CONTRIBUTING.md
+    about: How to get help, and what this project takes on.
+  - name: Report a vulnerability
+    url: https://github.com/simonvanlierde/batterway/security/advisories/new
+    about: Send a private report to the maintainers.

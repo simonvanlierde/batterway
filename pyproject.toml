@@ -13,6 +13,7 @@ authors = [
 ]
 maintainers = [{ name = "Simon van Lierde", email = "code@duinlab.nl" }]
 license = "BSD-3-Clause"
+license-files = ["LICENSE"]
 dependencies = [
     "chempy",
     "pandas",
